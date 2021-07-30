@@ -1,9 +1,11 @@
 #!/bin/bash
 
+dir=$(cd "$(dirname "$0")"; pwd)
+
 # CA
 function ca() {
   rm -rf ca
-  ./create-ca.sh <<EOF
+  $dir/create-ca.sh <<EOF
 CN
 Example Ltd
 Example Root CA
@@ -14,7 +16,7 @@ EOF
 # gen
 function gen() {
   rm -rf $1
-  ./create-cert.sh $1 <<EOF
+  $dir/create-cert.sh $1 <<EOF
 CN
 Beijing
 Beijing
@@ -33,6 +35,8 @@ EOF
 
 }
 
+mkdir -p output
+cd output
 ca
 gen "server"
 gen "client1"
