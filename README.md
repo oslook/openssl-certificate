@@ -29,7 +29,7 @@ using the `openssl.cnf`
 
 Server  [create-cert.sh](./create-cert.sh)
 ```
-  openssl genrsa -out private/server.key 2048
+  openssl genrsa -out private/server.key 4096
 
   # Create the server CSR
   openssl req -config openssl.cnf -key private/server.key -new -sha256 -out csr/server.csr
@@ -46,13 +46,13 @@ Server  [create-cert.sh](./create-cert.sh)
 
 
 ``` bash
-openssl genrsa -out server.key 1024
+openssl genrsa -out server.key 4096
 openssl req -new -x509 -days 3650 -key server.key -out server.pem -subj "/C=CN/ST=mykey/L=mykey/O=mykey/OU=mykey/CN=domain1/CN=domain2/CN=domain3"
 ```
 
 
 ``` bash
-openssl genrsa -out server.key 1024
+openssl genrsa -out server.key 4096
 openssl req -new -key server.key -out server.csr
 openssl x509 -req -in server.csr -out server.crt -signkey server.key -days 3650
 ```
@@ -71,6 +71,6 @@ Retrieve CA Certificate
 
 
 ## Github Action
-For CI/CD purposing, create sample ca and cert by Github Action, it easier to get certs for other project or other repos dependency.
-[Github Action config](.github/workflows/blank.yml)
-[Examples for the CA and Certs](.artifacts)
+For CI/CD purposing, create sample ca and cert by Github Action, it easier to get certs for other project or other repos dependency.  
+[Github Action config](.github/workflows/blank.yml)  
+[Examples for the CA and Certs](https://github.com/oslook/openssl-certificate/suites/3377117009/artifacts/79577065)
