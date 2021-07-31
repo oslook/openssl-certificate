@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
-      - name: Run a one-line script
+      - name: Run generate script
         run: bash ./auto.sh
-      
+      - uses: actions/upload-artifact@v2
+        with:
+          name: certs-examples
+          path: output
